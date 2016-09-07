@@ -23,9 +23,7 @@ def calc_fib(n):
     fib0 = 0
     fib1 = 1
     for term in range(n - 1):
-        temp_val = fib1
-        fib1 += fib0
-        fib0 = temp_val
+        fib0, fib1 = fib1, fib0 + fib1
     return fib1
 
 
