@@ -37,6 +37,7 @@ class TestGCD(unittest.TestCase):
 
     def test_normal(self):
         self.assertEqual(gcd_euclid(28851538, 1183019), 17657)
+        self.assertEqual(gcd_euclid(1023473145, 226553150), 5)
 
 
 class TestLCM(unittest.TestCase):
@@ -45,6 +46,7 @@ class TestLCM(unittest.TestCase):
 
     def test_large(self):
         self.assertEqual(lcm(28851538, 1183019), 1933053046)
+        self.assertEqual(lcm(1023473145, 226553150), 46374212988031350)
 
 
 class TestPisano(unittest.TestCase):
@@ -54,6 +56,9 @@ class TestPisano(unittest.TestCase):
 
     def test_large(self):
         self.assertEqual(fib_hg.get_pisano_period(130), 420)
+
+    def test_huge(self):
+        self.assertEqual(fib_hg.get_pisano_period(10000), 15000)
 
 
 class TestFibHuge(unittest.TestCase):
@@ -67,6 +72,8 @@ class TestFibHuge(unittest.TestCase):
 
     def test_huge(self):
         self.assertEqual(fib_hg.get_fibonacci_huge(239, 1000), 161)
+        self.assertEqual(fib_hg.get_fibonacci_huge(100, 100000), 15075)
+        self.assertEqual(fib_hg.get_fibonacci_huge(100000, 100000), 46875)
 
 if __name__ == "__main__":
     unittest.main()

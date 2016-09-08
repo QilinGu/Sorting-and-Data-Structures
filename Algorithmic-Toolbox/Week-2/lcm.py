@@ -1,6 +1,7 @@
 #! python3
 import sys
 from gcd import gcd_euclid
+from decimal import Decimal
 
 
 def lcm_naive(a, b):
@@ -19,7 +20,7 @@ def lcm(a, b):
     :param b: int second value
     :return: the least common multiple of a and b
     """
-    return int(a * b / gcd_euclid(a, b))
+    return int((Decimal(a) * Decimal(b)) / Decimal(gcd_euclid(a, b)))
 
 
 def main():

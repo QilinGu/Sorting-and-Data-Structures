@@ -15,19 +15,28 @@ def get_fibonacci_huge_naive(n, m):
     return current % m
 
 
+def get_fibonacci_huge_improved(n, m):
+    if n <= 1:
+        return n
+    previous = 0
+    current = 1
+
+    for _ in range(n - 1):
+        previous, current = current % m, previous % m + current % m
+
+    return current % m
+
+
 def get_pisano_period(m):
     sequence = [0, 1]
     index = 1
-    window = 2  # current pattern length to be compared
     while True:
-        sequence.append((sequence[index] % m + sequence[index - 1] % m) % m)
+        sequence.append((sequence[index] + sequence[index - 1]) % m)
         index += 1
 
-        if index + 1 == window * 2:
-            if sequence[window:] == sequence[:window]:
-                return window
-            else:
-                window += 1
+        if not (index + 1) % 2 and sequence[int(index / 2)] == sequence[index]:
+            if sequence[:int((index + 1) / 2)] == sequence[int((index + 1) / 2):]:
+                return int((index + 1) / 2)
 
     return -1
 
@@ -42,6 +51,7 @@ def get_fibonacci_huge(n, m):
     """
     if n <= 1:
         return n
+
     return calc_fib(n % get_pisano_period(m)) % m
 
 
