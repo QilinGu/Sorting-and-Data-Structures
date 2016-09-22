@@ -1,6 +1,7 @@
 import unittest
 from change import get_change
 from fractional_knapsack import get_optimal_value
+from dot_product import max_dot_product
 
 
 class TestChange(unittest.TestCase):
@@ -32,6 +33,11 @@ class TestKnapsack(unittest.TestCase):
 
     def test_multiple(self):
         self.assertEqual(round(get_optimal_value(50, [20, 50, 30], [60, 100, 120]), 4), 180.0000)
+
+
+class TestDotProduct(unittest.TestCase):
+    def test_type(self):
+        self.assertTrue(type(max_dot_product([23], [39])).__name__ == "int")
 
 if __name__ == "__main__":
     unittest.main()
