@@ -5,6 +5,7 @@ from change import get_change
 from fractional_knapsack import get_optimal_value
 from dot_product import max_dot_product
 from covering_segments import optimal_points
+from different_summands import optimal_summands
 
 
 class TestChange(unittest.TestCase):
@@ -69,6 +70,19 @@ class TestOptimalPoints(unittest.TestCase):
         self.assertEqual(len(points), 2)
         self.assertTrue(2 <= points[0] <= 3)
         self.assertTrue(5 <= points[1] <= 6)
+
+
+class TestOptimalSummands(unittest.TestCase):
+    def test_type(self):
+        self.assertTrue(type(optimal_summands(5)).__name__ == "list")
+
+    def test_one(self):
+        self.assertEqual(optimal_summands(1)[0], 1)
+        self.assertEqual(optimal_summands(2)[0], 2)
+
+    def test_multiple(self):
+        self.assertEqual(optimal_summands(8), [1, 2, 5])
+        self.assertEqual(optimal_summands(6), [1, 2, 3])
 
 if __name__ == "__main__":
     unittest.main()
