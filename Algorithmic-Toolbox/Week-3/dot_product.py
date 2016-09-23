@@ -6,6 +6,7 @@ import sys
 def max_dot_product(a, b):
     """
     Calculates the maximum dot product of two sequences a and b
+
     :param a: int list of numbers
     :param b: int list of numbers
     :return: int max dot product of a and b

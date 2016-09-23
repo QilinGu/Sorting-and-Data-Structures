@@ -1,7 +1,10 @@
 import unittest
+from collections import namedtuple
+
 from change import get_change
 from fractional_knapsack import get_optimal_value
 from dot_product import max_dot_product
+from covering_segments import optimal_points
 
 
 class TestChange(unittest.TestCase):
@@ -44,6 +47,28 @@ class TestDotProduct(unittest.TestCase):
 
     def test_multiple(self):
         self.assertEqual(max_dot_product([1, 3, -5], [-2, 4, 1]), 23)
+
+
+class TestOptimalPoints(unittest.TestCase):
+    def test_type(self):
+        segment = namedtuple('Segment', 'start end')
+        segments = [segment(23, 39)]
+        self.assertTrue(type(optimal_points(segments)).__name__ == "list")
+
+    def test_single(self):
+        segment = namedtuple('Segment', 'start end')
+        segments = [segment(23, 39)]
+        points = optimal_points(segments)
+        self.assertEqual(len(points), 1)
+        self.assertTrue(39 >= points[0] >= 23)
+
+    def test_multiple(self):
+        segment = namedtuple('Segment', 'start end')
+        segments = [segment(4, 7), segment(1, 3), segment(2, 5), segment(5, 6)]
+        points = optimal_points(segments)
+        self.assertEqual(len(points), 2)
+        self.assertTrue(2 <= points[0] <= 3)
+        self.assertTrue(5 <= points[1] <= 6)
 
 if __name__ == "__main__":
     unittest.main()
