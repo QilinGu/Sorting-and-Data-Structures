@@ -11,7 +11,7 @@ def optimal_summands(n):
     val = 1
     while n > 0:
         # Make last summand the remainder of the pool
-        if n - val < val:
+        if n - val <= val:
             summands.append(n)
             n = 0
         else:
