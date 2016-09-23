@@ -39,5 +39,11 @@ class TestDotProduct(unittest.TestCase):
     def test_type(self):
         self.assertTrue(type(max_dot_product([23], [39])).__name__ == "int")
 
+    def test_single(self):
+        self.assertEqual(max_dot_product([23], [39]), 897)
+
+    def test_multiple(self):
+        self.assertEqual(max_dot_product([1, 3, -5], [-2, 4, 1]), 23)
+
 if __name__ == "__main__":
     unittest.main()
